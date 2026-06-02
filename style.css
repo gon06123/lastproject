@@ -3,6 +3,10 @@ html {
     font-size: 30px;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+}
+
 body,
 h1,
 h2,
@@ -11,13 +15,370 @@ p {
     padding: 0;
 }
 
+
+p {
+    line-height: 1.7;
+    font-weight: 400;
+    font-size: 1rem;
+    display: inline;
+    letter-spacing: -1px;
+}
+
+
+
+h2 {
+    font-size: 2rem
+}
+
+
+
+
 .wrap {
     margin: auto;
-    width: 1400px;
+    width: 1565px;
 }
 
 .navbar {
     background-color: aqua;
+    height: 60px;
+
+}
+
+.navcontents {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 55px;
+}
+
+.navlist {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.navlist img {
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+
+
+.pt1 {
+    background-image: url(img/introbk.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     width: 100%;
-    height: 200px;
+    height: 1000px;
+}
+
+.pt2 {
+    background-color: #d3d3d3;
+    width: 100%;
+    height: 1000px;
+}
+
+/* 잎들이 등장할 특정 타겟 섹션 */
+.leaf-section {
+    position: relative;
+    /* 중요: absolute인 잎들의 기준점이 됨 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 🍃 나뭇잎 공통 스타일 */
+.leaf {
+    position: absolute;
+    /* 변경됨: 화면 고정(fixed)에서 섹션 내부 고정(absolute)으로 */
+    pointer-events: none;
+}
+
+
+.leaf1 {
+    top: 5%;
+    left: 30%;
+}
+
+.leaf2 {
+    top: 35%;
+    left: 50%;
+}
+
+.leaf3 {
+    top: 55%;
+    left: 70%;
+}
+
+.leaf4 {
+    top: 5%;
+    left: 30%;
+}
+
+.leaf5 {
+    top: 5%;
+    left: 30%;
+}
+
+.shaking-nonstop {
+    /* 애니메이션 적용: 이름(extreme-shake) / 지속시간(0.1s) / 반복(infinite) */
+    animation: extreme-shake 0.2s infinite linear;
+}
+
+@keyframes extreme-shake {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-5px, -2px) rotate(-2deg);
+    }
+
+    20% {
+        transform: translate(-10px, 0px) rotate(3deg);
+    }
+
+    30% {
+        transform: translate(5px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(5px, -5px) rotate(2deg);
+    }
+
+    50% {
+        transform: translate(-5px, 5px) rotate(-3deg);
+    }
+
+    60% {
+        transform: translate(-10px, 2px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(10px, 5px) rotate(-2deg);
+    }
+
+    80% {
+        transform: translate(-5px, -5px) rotate(3deg);
+    }
+
+    90% {
+        transform: translate(5px, 2px) rotate(-2deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+
+/* 박스 애니메이션이 일어나는 전체 스크롤 트랙 (5배 높이) */
+.scroll-container {
+    height: 500vh;
+    position: relative;
+}
+
+/* 화면을 고정시키는 스티키 구역 */
+.sticky-section {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* 🌟 배경 동영상: 비율 유지하며 꽉 채우고 맨 뒤(z-index: 0)로 고정 */
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+}
+
+
+
+/* 콘텐츠 정중앙 정렬 가이드 (z-index: 2) */
+.center-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+/* 커지는 흰색 박스 (z-index: 3) */
+.expanding-box {
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    background-color: #222;
+    z-index: 3;
+}
+
+/* 최상단 텍스트 컨테이너 (z-index: 10) */
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    z-index: 10;
+    pointer-events: none;
+    text-align: center;
+    transform: translateY(50px);
+}
+
+/* 숫자 디자인 */
+.number-display {
+    color: #F2EE19;
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1;
+
+
+}
+
+/* 설명 텍스트 상자 디자인 */
+.desc-box {
+    background-color: #222;
+    color: white;
+    max-width: 550px;
+    clip-path: inset(0 50% 0 50%);
+}
+
+
+
+.desc-box p {
+    opacity: 0.7;
+
+}
+
+
+
+
+
+.pt4 {
+    background-color: white;
+    height: 1700px;
+
+}
+
+
+.pt4textbox {
+    position: relative;
+    top: 1200px;
+    margin: auto;
+    text-align: center;
+    z-index: 10;
+}
+
+
+
+
+/* 📌 가로 스크롤 관련 CSS */
+.scroll-spacer {
+    position: relative;
+}
+
+.sticky-container {
+    position: sticky;
+    top: 0;
+    width: 8000px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 1. 바깥쪽 트랙은 너비 지정을 지웁니다 (wrap의 크기에 맞춰 늘어나도록) */
+.horizontal-track {
+    display: flex;
+    height: 100vh;
+    will-change: transform;
+}
+
+/* 2. 📌 핵심: 절대 찌그러지지 않는 튼튼한 박스 */
+.scroll-wrap {
+    display: flex;
+    position: relative;
+    /* 내부 요소들을 absolute로 맘대로 배치하기 위한 기준점 */
+
+    /* 창을 줄여도 이 넓이는 절대 변하지 않습니다! */
+    width: 7000px;
+    height: 100%;
+    margin: auto;
+
+    /* 배경 이미지를 넣는다면 트랙이 아니라 이 wrap에 넣어주세요 */
+}
+
+
+
+
+/* 3. 내부 요소 자유 배치 */
+
+.scene {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    /* 📌 자식 요소들과 상관없이 화면 세로를 꽉 채우도록 강제 설정 */
+}
+
+.zone1 {
+    width: 3000px;
+    left: 1200px;
+    /* 예시: 전체 도화지에서 이 파란 방이 시작될 가로 위치 */
+    background-color: blue;
+}
+
+/* 📌 이제 파란 방 안에서 글자와 이미지들을 absolute로 맘대로 배치합니다 */
+.pt5textbox1 {
+    position: absolute;
+    left: 100px;
+    top: 20%;
+}
+
+.pt5textbox2 {
+    position: absolute;
+    left: 800px;
+    top: 50%;
+    writing-mode: vertical-rl;
+    /* 꺾이는 세로 글씨 */
+}
+
+.pt5img2 {
+    position: absolute;
+    right: 200px;
+    top: 10%;
+}
+
+
+
+
+
+.pt6 {
+    position: relative;
+    height: 3000px;
+}
+
+.pt6bk {
+    position: relative;
+    top: 1000px;
+    width: 100%;
+    height: 750px;
+    background-color: #F2EE19;
+    text-align: center;
+}
+
+.pt6textbox1 {
+    position: relative;
+    top: 500px;
+    margin: auto;
+    text-align: center;
 }
