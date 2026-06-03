@@ -10,6 +10,7 @@ body::-webkit-scrollbar {
 body,
 h1,
 h2,
+h3,
 p {
     margin: 0;
     padding: 0;
@@ -24,18 +25,31 @@ p {
     letter-spacing: -1px;
 }
 
-
+h1 {
+    font-size: 4rem;
+    font-weight: 900;
+}
 
 h2 {
     font-size: 2rem
 }
 
+h3 {
+    letter-spacing: -2px;
+    line-height: 2;
+    font-size: 1.5rem
+}
 
 
+img {
+    display: block;
+}
 
 .wrap {
+    position: relative;
     margin: auto;
     width: 1565px;
+    height: 100%;
 }
 
 .navbar {
@@ -221,7 +235,7 @@ h2 {
     position: absolute;
     width: 0%;
     height: 100%;
-    background-color: #222;
+    background-color: #111;
     z-index: 3;
 }
 
@@ -249,7 +263,6 @@ h2 {
 
 /* 설명 텍스트 상자 디자인 */
 .desc-box {
-    background-color: #222;
     color: white;
     max-width: 550px;
     clip-path: inset(0 50% 0 50%);
@@ -314,7 +327,7 @@ h2 {
     width: 7000px;
     height: 100%;
     margin: auto;
-
+    background-color: aqua;
     /* 배경 이미지를 넣는다면 트랙이 아니라 이 wrap에 넣어주세요 */
 }
 
@@ -324,15 +337,17 @@ h2 {
 /* 3. 내부 요소 자유 배치 */
 
 .scene {
-    position: absolute;
+    position: relative;
+    flex-shrink: 0;
     top: 0;
     height: 100vh;
     /* 📌 자식 요소들과 상관없이 화면 세로를 꽉 채우도록 강제 설정 */
 }
 
 .zone1 {
-    width: 3000px;
-    left: 1200px;
+    position: relative;
+    width: 3330px;
+    margin-left: 340px;
     /* 예시: 전체 도화지에서 이 파란 방이 시작될 가로 위치 */
     background-color: blue;
 }
@@ -340,8 +355,8 @@ h2 {
 /* 📌 이제 파란 방 안에서 글자와 이미지들을 absolute로 맘대로 배치합니다 */
 .pt5textbox1 {
     position: absolute;
-    left: 100px;
-    top: 20%;
+    left: 0px;
+    top: 600px;
 }
 
 .pt5textbox2 {
@@ -352,10 +367,26 @@ h2 {
     /* 꺾이는 세로 글씨 */
 }
 
+.pt5img1 {
+    position: absolute;
+    left: 350px;
+    bottom: 0px;
+}
+
+.pt5img1 img {
+    width: 450px;
+}
+
 .pt5img2 {
     position: absolute;
-    right: 200px;
+    right: 0px;
     top: 10%;
+}
+
+.zone2 {
+    width: 3330px;
+    background-color: #F2EE19;
+
 }
 
 
@@ -371,14 +402,235 @@ h2 {
     position: relative;
     top: 1000px;
     width: 100%;
-    height: 750px;
+    height: 850px;
     background-color: #F2EE19;
     text-align: center;
 }
 
 .pt6textbox1 {
-    position: relative;
+    position: absolute;
+    width: 1400px;
     top: 500px;
-    margin: auto;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* 자기 크기의 절반만큼 뒤로 당김 */
     text-align: center;
+}
+
+.pt6textbox2 {
+    padding-top: 200px;
+    width: 600px;
+
+}
+
+.pt6img1 {
+    position: relative;
+    height: 1300px;
+
+}
+
+.pt6img1 img {
+    position: absolute;
+    width: 300px;
+}
+
+.trash0 {
+    top: -450px;
+    right: -150px;
+}
+
+.trash1 {
+    top: -300px;
+    left: 950px;
+}
+
+.trash2 {
+    top: -250px;
+    left: 750px;
+}
+
+.trash3 {
+    top: -200px;
+    left: 550px;
+}
+
+.trash4 {
+    top: -150px;
+    left: 350px;
+}
+
+.trash5 {
+    top: -100px;
+    left: 150px;
+}
+
+
+
+.trash7 {
+    top: -50px;
+    left: 0px;
+}
+
+
+
+.trash8 {
+    top: 100px;
+    left: -100px;
+}
+
+.trash9 {
+    top: 300px;
+    left: -150px;
+}
+
+.trash10 {
+    top: 500px;
+    left: -150px;
+}
+
+.trash11 {
+    top: 700px;
+    left: 0px;
+}
+
+
+
+
+
+.board1 {
+    top: 700px;
+    left: -200px;
+}
+
+.trash12 {
+    top: 800px;
+    left: 100px;
+}
+
+.board2 {
+    top: 800px;
+    left: -100px;
+}
+
+.trash13 {
+    top: 850px;
+    left: 200px;
+}
+
+.board3 {
+    top: 850px;
+    left: 0px;
+}
+
+
+
+.board4 {
+    top: 875px;
+    left: 200px;
+}
+
+.board5 {
+    top: 900px;
+    left: 400px;
+}
+
+.board6 {
+    top: 925px;
+    left: 600px;
+}
+
+.board7 {
+    top: 900px;
+    left: 800px;
+}
+
+.board8 {
+    top: 925px;
+    left: 1000px;
+}
+
+.board9 {
+    top: 900px;
+    left: 1200px;
+}
+
+.board10 {
+    top: 925px;
+    left: 1400px;
+}
+
+.board11 {
+    top: 900px;
+    left: 1600px;
+}
+
+
+.pt7 {
+    height: 2000px;
+    background-color: #d3d3d3;
+}
+
+
+.pt8 {
+    position: relative;
+    height: 1700px;
+    background-color: #111
+}
+
+
+.pt8textbox1 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    /* 📌 1. 위에서 50%만큼 내려오게 설정 */
+
+    /* 📌 2. translateX 지우고 translate(-50%, -50%)로 수정! */
+    /* (가로로 내 몸집의 반인 -50%, 세로로 내 몸집의 반인 -50%를 동시에 이동시키는 치트키입니다) */
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+    width: 1500px;
+    color: #F2EE19;
+}
+
+.pt8textbox2 {
+    position: absolute;
+    padding-top: 212px;
+    padding-left: 417px;
+    writing-mode: vertical-rl;
+    /* 세로쓰기 */
+
+}
+
+.pt8textbox3 {
+    position: absolute;
+    padding-top: 880px;
+    padding-left: 575px;
+
+}
+
+.pt8textbox4 {
+    position: absolute;
+    padding-top: 1480px;
+    padding-left: 1120px;
+
+}
+
+.pt8textbox2 p {
+    letter-spacing: 0.2rem;
+
+}
+
+
+
+.leaf6 {
+    top: 100px;
+}
+
+
+
+
+.pt9 {
+    position: relative;
+    height: 2000px;
 }
