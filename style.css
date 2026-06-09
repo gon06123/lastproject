@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+
 html {
     word-break: keep-all;
     font-size: 30px;
+    user-select: none;
 }
 
 body::-webkit-scrollbar {
@@ -12,6 +16,7 @@ h1,
 h2,
 h3,
 p {
+    font-family: "Noto Sans KR", sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -36,8 +41,9 @@ h2 {
 
 h3 {
     letter-spacing: -2px;
-    line-height: 2;
-    font-size: 1.5rem
+    line-height: 1.7;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 
@@ -48,8 +54,18 @@ img {
 .wrap {
     position: relative;
     margin: auto;
-    width: 1565px;
+    width: 1572px;
     height: 100%;
+}
+
+.rl {
+    writing-mode: vertical-rl;
+    /* 꺾이는 세로 글씨 */
+
+}
+
+.rl p {
+    letter-spacing: 0.05rem;
 }
 
 .navbar {
@@ -190,7 +206,7 @@ img {
 
 /* 박스 애니메이션이 일어나는 전체 스크롤 트랙 (5배 높이) */
 .scroll-container {
-    height: 500vh;
+    min-height: 500vh;
     position: relative;
 }
 
@@ -235,7 +251,7 @@ img {
     position: absolute;
     width: 0%;
     height: 100%;
-    background-color: #111;
+    background-color: #121212;
     z-index: 3;
 }
 
@@ -280,16 +296,76 @@ img {
 
 
 .pt4 {
-    background-color: white;
-    height: 1700px;
+    position: relative;
+    height: 2500px;
+    background-color: #d3d3d3;
+    color: white;
+
+}
+
+.road {
+    position: absolute;
+    left: 50%;
+    /* 2. 중앙 정렬을 위해 왼쪽에서 50% 이동 */
+    transform: translateX(-50%);
+    /* 3. 본인 너비의 반만큼 왼쪽으로 당겨 중앙 정렬 */
+    width: 92%;
+    height: 100%;
+    background-color: #121212;
+}
+
+.linecontainer {
+    position: absolute;
+    width: 20px;
+    height: 1800px;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.pt4line {
+    background-color: #F2EE19;
+    width: 5px;
+    height: 1800px;
+
+
 
 }
 
 
-.pt4textbox {
-    position: relative;
-    top: 1200px;
-    margin: auto;
+
+
+.pt4textbox1 {
+    position: absolute;
+    width: 600px;
+    padding-left: 100px;
+    top: 100px;
+}
+
+.pt4textbox2 {
+    position: absolute;
+    width: 600px;
+    right: 0;
+    padding-right: 100px;
+    top: 500px;
+}
+
+.pt4textbox3 {
+    position: absolute;
+    width: 600px;
+    padding-left: 100px;
+    top: 1500px;
+}
+
+.pt4textbox4 {
+    position: absolute;
+    top: 2000px;
+    left: 50%;
+    transform: translateX(-50%);
     text-align: center;
     z-index: 10;
 }
@@ -349,41 +425,55 @@ img {
     width: 3330px;
     margin-left: 340px;
     /* 예시: 전체 도화지에서 이 파란 방이 시작될 가로 위치 */
-    background-color: blue;
+    background-color: white;
 }
 
 /* 📌 이제 파란 방 안에서 글자와 이미지들을 absolute로 맘대로 배치합니다 */
 .pt5textbox1 {
     position: absolute;
-    left: 0px;
-    top: 600px;
+    left: -65px;
+    top: 250px;
+    text-decoration: underline;
+    text-underline-offset: 20px;
+    /* 값을 키울수록 밑줄이 아래로 내려갑니다 */
 }
+
+
 
 .pt5textbox2 {
     position: absolute;
-    left: 800px;
-    top: 50%;
-    writing-mode: vertical-rl;
-    /* 꺾이는 세로 글씨 */
+    left: 1670px;
+    top: 361px;
+}
+
+.pt5textbox3 {
+    position: absolute;
+    top: 750px;
+    left: 1682px;
 }
 
 .pt5img1 {
     position: absolute;
-    left: 350px;
-    bottom: 0px;
+    left: 1124px;
+    top: 400px;
 }
 
-.pt5img1 img {
-    width: 450px;
-}
+
 
 .pt5img2 {
     position: absolute;
-    right: 0px;
-    top: 10%;
+    top: 0px;
+    left: 1770px;
+
 }
 
-.zone2 {
+.pt5img3 {
+    position: absolute;
+    bottom: 00px;
+    left: 2800px;
+}
+
+.pt .zone2 {
     width: 3330px;
     background-color: #F2EE19;
 
@@ -409,7 +499,7 @@ img {
 
 .pt6textbox1 {
     position: absolute;
-    width: 1400px;
+    width: 1200px;
     top: 500px;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -432,6 +522,8 @@ img {
 .pt6img1 img {
     position: absolute;
     width: 300px;
+    opacity: 0;
+    transition: opacity 0.1s;
 }
 
 .trash0 {
@@ -574,7 +666,13 @@ img {
 .pt8 {
     position: relative;
     height: 1700px;
-    background-color: #111
+    background-color: #121212;
+    overflow: hidden;
+
+}
+
+.pt8 p {
+    font-weight: 700;
 }
 
 
@@ -622,15 +720,128 @@ img {
 }
 
 
+.rain {
+    position: absolute;
+}
 
-.leaf6 {
+.rain1 {
+    top: -100px;
+}
+
+.rain2 {
+    top: 200px;
+    left: -200px;
+}
+
+.rain3 {
+    top: 300px;
+    left: 150px;
+}
+
+.rain4 {
+    top: -100px;
+    left: 400px;
+}
+
+.rain5 {
+    top: 550px;
+    left: 200px;
+}
+
+.rain6 {
     top: 100px;
+    left: 700px;
+}
+
+.rain7 {
+    top: 200px;
+    left: 900px;
+}
+
+.rain8 {
+    top: -300px;
+    left: 800px;
+}
+
+.rain9 {
+    top: -300px;
+    left: 1000px;
+}
+
+.rain10 {
+    top: -300px;
+    left: 1100px;
 }
 
 
+.rain11 {
+    top: 300px;
+    left: 1500px;
+}
+
+.rain12 {
+    top: 150px;
+    left: 1200px;
+}
+
+.rain13 {
+    top: -300px;
+    left: 1400px;
+}
+
+.rain14 {
+    top: 500px;
+    left: 1300px;
+}
+
+.rain15 {
+    top: 800px;
+    left: 1100px;
+}
+
+.rain16 {
+    top: 1200px;
+    left: 1250px;
+}
+
+.rain17 {
+    top: 1000px;
+    left: 900px;
+}
+
+.rain18 {
+    top: 1400px;
+    left: 300px;
+}
+
+.rain19 {
+    top: 1200px;
+    left: 50px;
+}
+
+.rain20 {
+    top: 1000px;
+    left: -100px;
+}
+
+.rain21 {
+    top: 1100px;
+    left: 500px;
+}
+
+.rain22 {
+    top: 1250px;
+    left: 400px;
+}
+
+.rain23 {
+    top: 850px;
+    left: 800px;
+}
 
 
 .pt9 {
     position: relative;
     height: 2000px;
+    background-color: #121212;
 }

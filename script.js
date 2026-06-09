@@ -96,6 +96,20 @@ function animateBox() {
 animateBox();
 
 
+const steps = document.querySelectorAll('.shrink-js p');
+const startSize = 3.5; // 시작 폰트 크기 (2.5rem)
+const endSize = 1.0;   // 가장 작은 마지막 폰트 크기 (1.0rem)
+const totalSteps = steps.length;
+
+steps.forEach((el, index) => {
+    // 인덱스에 따라 첫 단어부터 마지막 단어('를')까지 아주 일정하고 자연스럽게 줄어들도록 공식 적용
+    const size = startSize - (index * (startSize - endSize) / (totalSteps - 1));
+    el.style.fontSize = `${size}rem`;
+});
+
+
+
+
 const spacer = document.getElementById('spacer');
 const track = document.getElementById('track');
 
@@ -124,5 +138,94 @@ window.addEventListener('scroll', () => {
         track.style.transform = `translateX(-${maxTranslate}px)`;
     }
 });
+
+
+
+
+
+
+// ==========================================
+// pt6 이미지 순차 페이드인 인터랙션 (최종본)
+// ==========================================
+const pt6Section = document.querySelector('.pt6');
+const pt6Images = document.querySelectorAll('.pt6img1 img');
+
+let pt6TargetProgress = 0;
+let pt6CurrentProgress = 0;
+
+window.addEventListener('scroll', () => {
+    const rect = pt6Section.getBoundingClientRect();
+    const sectionHeight = pt6Section.offsetHeight;
+
+    // [튜닝] startOffset: 화면의 80% 지점(하단)에서부터 이미지가 나타나기 시작함
+    // 이 숫자를 키우면 더 빨리 시작하고, 줄이면 늦게 시작합니다.
+    const startOffset = window.innerHeight * 0.7;
+
+    // 섹션 내 스크롤 진행도 계산
+    let progress = (-rect.top + startOffset) / (sectionHeight - window.innerHeight);
+
+    // 0~1 사이로 고정
+    pt6TargetProgress = Math.max(0, Math.min(1, progress));
+});
+
+function animatePt6() {
+    // 1. 관성 효과 (0.15: 더 빠르게 쫓아오도록 조절됨)
+    pt6CurrentProgress += (pt6TargetProgress - pt6CurrentProgress) * 0.05;
+
+    // 2. 이미지들 순차 등장
+    pt6Images.forEach((img, index) => {
+        // [튜닝] index * 0.04: 각 이미지 간격 (작을수록 동시에 나타남)
+        const startThreshold = index * 0.04;
+
+        // [튜닝] * 20: 투명도가 0에서 1로 변하는 속도 (클수록 확 나타남)
+        const opacity = Math.min(1, Math.max(0, (pt6CurrentProgress - startThreshold) * 8));
+
+        img.style.opacity = opacity;
+    });
+
+    requestAnimationFrame(animatePt6);
+}
+
+// 애니메이션 실행
+animatePt6();
+
+
+
+
+
+// ==========================================
+// 비 애니메이션 전용 로직 (분리됨)
+// ==========================================
+const rainElements = document.querySelectorAll('.rain');
+const rainSection = document.querySelector('.pt8'); // 해당 섹션
+const rainOffset = rainSection.offsetTop;
+
+let rainTargetY = 0;
+let rainCurrentY = 0;
+
+window.addEventListener('scroll', () => {
+    // 섹션 시작점 기준의 상대 스크롤 값 계산
+    rainTargetY = window.scrollY - rainOffset;
+});
+
+function animateRain() {
+    // 1. 부드러운 움직임 계산 (관성 적용)
+    rainCurrentY += (rainTargetY - rainCurrentY) * 0.09;
+
+    // 2. 비 요소들 이동
+    rainElements.forEach(rain => {
+        // 섹션 밖에서는 0으로 유지
+        const relativeY = Math.max(0, rainCurrentY);
+        const speed = rain.getAttribute('data-speed') || 0.1;
+
+        rain.style.transform = `translateY(${relativeY * speed}px)`;
+    });
+
+    // 3. 루프 실행
+    requestAnimationFrame(animateRain);
+}
+
+// 비 애니메이션 시작
+animateRain();
 
 
