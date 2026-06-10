@@ -103,9 +103,27 @@ const totalSteps = steps.length;
 
 steps.forEach((el, index) => {
     // 인덱스에 따라 첫 단어부터 마지막 단어('를')까지 아주 일정하고 자연스럽게 줄어들도록 공식 적용
-    const size = startSize - (index * (startSize - endSize) / (totalSteps - 1));
+    const size = totalSteps > 1
+        ? startSize - (index * (startSize - endSize) / (totalSteps - 1))
+        : startSize;
     el.style.fontSize = `${size}rem`;
 });
+
+
+
+// pt5textbox4용 글자 크기 축소 로직 (수치 변경 가능)
+const steps4 = document.querySelectorAll('.pt5textbox4 p');
+const startSize4 = 0.9; // pt5textbox4 시작 폰트 크기 (원하시는 값으로 조정하세요)
+const endSize4 = 0.3;   // pt5textbox4 마지막 폰트 크기 (원하시는 값으로 조정하세요)
+const totalSteps4 = steps4.length;
+
+steps4.forEach((el, index) => {
+    const size = totalSteps4 > 1
+        ? startSize4 - (index * (startSize4 - endSize4) / (totalSteps4 - 1))
+        : startSize4;
+    el.style.fontSize = `${size}rem`;
+});
+
 
 
 

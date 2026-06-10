@@ -61,16 +61,21 @@ img {
 .rl {
     writing-mode: vertical-rl;
     /* 꺾이는 세로 글씨 */
-
 }
 
 .rl p {
     letter-spacing: 0.05rem;
 }
 
+.num {
+    text-orientation: upright;
+}
+
 .navbar {
-    background-color: aqua;
+    background-color: #121212;
     height: 60px;
+    color: white;
+
 
 }
 
@@ -92,6 +97,7 @@ img {
     width: 40px;
     height: 40px;
     display: block;
+    filter: invert(1);
 }
 
 
@@ -368,6 +374,7 @@ img {
     transform: translateX(-50%);
     text-align: center;
     z-index: 10;
+    background-color: #121212;
 }
 
 
@@ -381,7 +388,7 @@ img {
 .sticky-container {
     position: sticky;
     top: 0;
-    width: 8000px;
+    width: 6000px;
     height: 100vh;
     overflow: hidden;
 }
@@ -400,10 +407,10 @@ img {
     /* 내부 요소들을 absolute로 맘대로 배치하기 위한 기준점 */
 
     /* 창을 줄여도 이 넓이는 절대 변하지 않습니다! */
-    width: 7000px;
+    width: 5000px;
     height: 100%;
     margin: auto;
-    background-color: aqua;
+
     /* 배경 이미지를 넣는다면 트랙이 아니라 이 wrap에 넣어주세요 */
 }
 
@@ -428,14 +435,17 @@ img {
     background-color: white;
 }
 
+.zone2 {
+    position: relative;
+    width: 1670px;
+
+}
+
 /* 📌 이제 파란 방 안에서 글자와 이미지들을 absolute로 맘대로 배치합니다 */
 .pt5textbox1 {
     position: absolute;
     left: -65px;
     top: 250px;
-    text-decoration: underline;
-    text-underline-offset: 20px;
-    /* 값을 키울수록 밑줄이 아래로 내려갑니다 */
 }
 
 
@@ -451,6 +461,53 @@ img {
     top: 750px;
     left: 1682px;
 }
+
+
+
+.pt5textbox4 {
+    position: absolute;
+    transform: rotate(270deg) scaleX(1.5);
+    top: 515px;
+    left: 2642px;
+
+}
+
+.pt5textbox5 {
+    position: absolute;
+    top: 0px;
+    left: 2800px;
+
+}
+
+.pt5textbox6 {
+    position: absolute;
+    top: 170px;
+    left: 300px;
+
+}
+
+.pt5textbox7 {
+    position: absolute;
+
+    top: 220px;
+    left: 450px;
+
+}
+
+.pt5textbox8 {
+    position: absolute;
+    top: 550px;
+    left: 500px;
+
+}
+
+.pt5textbox9 {
+    position: absolute;
+    top: 600px;
+    left: 1000px;
+
+}
+
 
 .pt5img1 {
     position: absolute;
@@ -469,18 +526,81 @@ img {
 
 .pt5img3 {
     position: absolute;
-    bottom: 00px;
+    top: 80px;
     left: 2800px;
 }
 
-.pt .zone2 {
-    width: 3330px;
-    background-color: #F2EE19;
-
+.pt5img4 {
+    position: absolute;
+    top: 0;
+    left: 500px;
 }
 
 
 
+
+.footstep1 {
+    position: absolute;
+    top: 25px;
+    left: 1300px;
+}
+
+.footstep2 {
+    position: absolute;
+    top: 100px;
+    left: 1450px;
+}
+
+.footstep3 {
+    position: absolute;
+    top: 175px;
+    left: 1600px;
+}
+
+.footstep4 {
+    position: absolute;
+    top: 250px;
+    left: 1700px;
+}
+
+
+.footstep5 {
+    position: absolute;
+    top: 735px;
+    left: 2400px;
+
+}
+
+.footstep6 {
+    position: absolute;
+    top: 735px;
+    left: 2500px;
+
+}
+
+.footstep7 {
+    position: absolute;
+    top: 100px;
+    left: 2773px;
+}
+
+.footstep8 {
+    position: absolute;
+    top: 250px;
+    left: 2773px;
+}
+
+
+
+.scroll-spacer h3 {
+    color: #F2EE19;
+}
+
+.talk1 {
+    position: absolute;
+    top: -15px;
+    left: 1800px;
+}
 
 
 .pt6 {
