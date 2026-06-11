@@ -303,42 +303,8 @@ img {
 
 .pt4 {
     position: relative;
-    height: 2500px;
-    background-color: #d3d3d3;
-    color: white;
-
-}
-
-.road {
-    position: absolute;
-    left: 50%;
-    /* 2. 중앙 정렬을 위해 왼쪽에서 50% 이동 */
-    transform: translateX(-50%);
-    /* 3. 본인 너비의 반만큼 왼쪽으로 당겨 중앙 정렬 */
-    width: 92%;
-    height: 100%;
-    background-color: #121212;
-}
-
-.linecontainer {
-    position: absolute;
-    width: 20px;
-    height: 1800px;
-    top: 0px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    display: flex;
-    justify-content: space-between;
-
-}
-
-.pt4line {
-    background-color: #F2EE19;
-    width: 5px;
-    height: 1800px;
-
-
+    height: 3500px;
+    padding-top: 150px;
 
 }
 
@@ -347,9 +313,9 @@ img {
 
 .pt4textbox1 {
     position: absolute;
-    width: 600px;
-    padding-left: 100px;
-    top: 100px;
+    width: 800px;
+    padding-left: 750px;
+    top: -20px;
 }
 
 .pt4textbox2 {
@@ -363,20 +329,65 @@ img {
 .pt4textbox3 {
     position: absolute;
     width: 600px;
-    padding-left: 100px;
-    top: 1500px;
+    right: 0;
+    padding-right: 100px;
+    top: 1000px;
 }
 
 .pt4textbox4 {
     position: absolute;
-    top: 2000px;
+    width: 500px;
+    padding-left: 100px;
+    top: 1500px;
+}
+
+
+
+
+
+
+.pt4textbox5 {
+    position: absolute;
+    top: 3000px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
     z-index: 10;
-    background-color: #121212;
+
 }
 
+
+.fence1 {
+    position: absolute;
+    left: -300px;
+    top: 370px;
+}
+
+.fence2 {
+    position: absolute;
+    right: -300px;
+    top: 800px;
+}
+
+.fence3 {
+    position: absolute;
+    left: -300px;
+    top: 1550px;
+}
+
+.block1 {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background-color: #d3d3d3;
+    color: #d3d3d3;
+}
+
+.bike {
+    position: absolute;
+    bottom: 130px;
+    right: -200px;
+}
 
 
 
@@ -539,18 +550,6 @@ img {
 
 
 
-.footstep1 {
-    position: absolute;
-    top: 25px;
-    left: 1300px;
-}
-
-.footstep2 {
-    position: absolute;
-    top: 100px;
-    left: 1450px;
-}
-
 .footstep3 {
     position: absolute;
     top: 175px;
@@ -631,6 +630,14 @@ img {
     padding-top: 200px;
     width: 600px;
 
+}
+
+.pt6textbox3 {
+    position: absolute;
+    width: 600px;
+    top: 1800px;
+    right: 0;
+    text-align: right;
 }
 
 .pt6img1 {
@@ -813,35 +820,35 @@ img {
 
 .pt8textbox2 {
     position: absolute;
-    padding-top: 212px;
-    padding-left: 417px;
+    top: 212px;
+    left: 417px;
     writing-mode: vertical-rl;
     /* 세로쓰기 */
-
+    will-change: transform;
 }
 
 .pt8textbox3 {
     position: absolute;
-    padding-top: 880px;
-    padding-left: 575px;
-
+    top: 880px;
+    left: 575px;
+    will-change: transform;
 }
 
 .pt8textbox4 {
     position: absolute;
-    padding-top: 1480px;
-    padding-left: 1120px;
-
+    top: 1480px;
+    left: 1120px;
+    will-change: transform;
 }
 
 .pt8textbox2 p {
     letter-spacing: 0.2rem;
-
 }
 
 
 .rain {
     position: absolute;
+    will-change: transform;
 }
 
 .rain1 {
@@ -957,6 +964,27 @@ img {
 .rain23 {
     top: 850px;
     left: 800px;
+}
+
+
+.rain24 {
+    top: 0px;
+    left: 250px;
+}
+
+.rain25 {
+    top: 300px;
+    left: 600px;
+}
+
+.rain26 {
+    top: 350px;
+    left: 650px;
+}
+
+.rain27 {
+    top: 1000px;
+    left: 600px;
 }
 
 
