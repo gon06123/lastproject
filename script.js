@@ -1,6 +1,32 @@
 const leaves = document.querySelectorAll('.leaf');
 const leafSection = document.querySelector('.leaf-section');
 
+// ==========================================
+// 전체 페이지 부드러운 세로 스크롤 (Lenis)
+// ==========================================
+const lenis = new Lenis({
+    duration: 0.7, // 스크롤 부드러움 정도 (기본값 1.2)
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // 부드러운 감속 곡선
+    direction: 'vertical',
+    gestureDirection: 'vertical',
+    smooth: true,
+    mouseMultiplier: 1,
+    smoothTouch: false,
+    touchMultiplier: 2,
+    infinite: false,
+});
+
+function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
+// ==========================================
+// 기존 로직들
+// ==========================================
+
 let targetY = 0;
 let currentY = 0;
 
@@ -140,7 +166,10 @@ function setHeight() {
 setHeight();
 window.addEventListener('resize', setHeight);
 
-// 스크롤 시 가로로 이동시키는 로직 (이전과 100% 동일합니다)
+let hzTargetX = 0;
+let hzCurrentX = 0;
+
+// 스크롤 시 가로로 이동시키는 로직 (부드러운 관성 추가)
 window.addEventListener('scroll', () => {
     const spacerTop = spacer.offsetTop;
     const spacerHeight = spacer.offsetHeight;
@@ -149,13 +178,169 @@ window.addEventListener('scroll', () => {
 
     if (currentScroll >= spacerTop && currentScroll <= spacerTop + spacerHeight - window.innerHeight) {
         const progress = (currentScroll - spacerTop) / (spacerHeight - window.innerHeight);
-        track.style.transform = `translateX(-${progress * maxTranslate}px)`;
+        hzTargetX = -(progress * maxTranslate);
     } else if (currentScroll < spacerTop) {
-        track.style.transform = `translateX(0px)`;
+        hzTargetX = 0;
     } else {
-        track.style.transform = `translateX(-${maxTranslate}px)`;
+        hzTargetX = -maxTranslate;
     }
 });
+
+function animateHorizontalScroll() {
+    // 0.08의 비율로 부드럽게 목표 지점을 따라감 (숫자가 작을수록 더 미끄러짐)
+    hzCurrentX += (hzTargetX - hzCurrentX) * 0.08;
+    track.style.transform = `translateX(${hzCurrentX}px)`;
+
+    // 가로 스크롤이 부드럽게 이동하는 매 프레임마다 텍스트 & 발자국 업데이트
+    updateHorizontalTexts();
+    updateFootprints();
+
+    requestAnimationFrame(animateHorizontalScroll);
+}
+
+// ==========================================
+// 발자국 스크롤 연동 나타나기
+// ==========================================
+const footprints = document.querySelectorAll('.scene div[class^="footstep"] img');
+
+footprints.forEach(img => {
+    img.style.opacity = '0';
+});
+
+function updateFootprints() {
+    const triggerX = window.innerWidth * 0.7;
+
+    footprints.forEach(img => {
+        const rect = img.getBoundingClientRect();
+
+        // 텍스트와 마찬가지로 X좌표 기준 + 같은 X좌표일 경우 위에서 아래로 켜지도록 Y좌표 가중치
+        let charOffset = rect.left + (rect.top * 0.5);
+
+        // 100px 구간 동안 부드럽게 투명도가 0 -> 1.0 으로 변함
+        let opacity = (triggerX - charOffset) / 100;
+        opacity = Math.max(0, Math.min(1, opacity));
+
+        img.style.opacity = opacity;
+    });
+}
+
+// ==========================================
+// 가로 스크롤 파트 텍스트 한 글자씩 나타나기
+// ==========================================
+const hzTexts = document.querySelectorAll('.scroll-spacer .scene p');
+const allChars = [];
+
+hzTexts.forEach(p => {
+    const text = p.textContent;
+    p.innerHTML = '';
+
+    for (let char of text) {
+        if (char === ' ' || char === '\n' || char === '\t') {
+            p.appendChild(document.createTextNode(char));
+        } else {
+            const span = document.createElement('span');
+            span.innerText = char;
+            span.style.opacity = '0'; // 안 보이다가 확 나타나도록 초기 0
+            p.appendChild(span);
+            allChars.push(span);
+        }
+    }
+});
+
+function updateHorizontalTexts() {
+    // 화면의 70% 지점 (오른쪽에서 30% 들어온 위치)
+    const triggerX = window.innerWidth * 0.7;
+
+    let prevOffset = -Infinity;
+
+    allChars.forEach(span => {
+        const rect = span.getBoundingClientRect();
+
+        // 기본 좌표 = X좌표 + (세로쓰기를 위한 Y좌표 가중치 0.5)
+        let charOffset = rect.left + (rect.top * 0.5);
+
+        // 📌 딜레이 해결: 
+        // 물리적 위치가 뒤죽박죽(역순이거나 겹침)일 때만 최소 간격(15px)으로 순서를 보정합니다.
+        // 간격이 너무 크면 뒤로 갈수록 눈덩이처럼 딜레이가 쌓이므로 15px로 타협했습니다.
+        if (charOffset < prevOffset + 15) {
+            charOffset = prevOffset + 15;
+        }
+        prevOffset = charOffset;
+
+        // 100px 구간 동안 부드럽지만 텐션있게 투명도가 0 -> 1.0 으로 변함
+        let opacity = (triggerX - charOffset) / 100;
+        opacity = Math.max(0, Math.min(1, opacity));
+
+        span.style.opacity = opacity;
+    });
+}
+
+// ==========================================
+// pt5-5 자동차 및 텍스트 밀어내기 인터랙션
+// ==========================================
+const pt55Section = document.querySelector('.pt5-5');
+const yellowcar = document.querySelector('.yellowcar');
+const movingtext3 = document.querySelector('.movingtext3');
+
+let pt55Target = 0;
+let pt55Current = 0;
+
+window.addEventListener('scroll', () => {
+    if (!pt55Section) return;
+    const rect = pt55Section.getBoundingClientRect();
+
+    // '일로와' 텍스트의 실제 Y위치
+    const yPos = rect.top + 950;
+
+    // 트리거 시점 대폭 앞당김: 텍스트가 화면 중앙에 도달하기 '전에' 이미 충돌이 일어나도록
+    // 화면에 나타나기 직전(130%)부터 모션을 시작하고, 중앙(50%)보다 위인 40%에서 모션이 끝납니다.
+    const startY = window.innerHeight * 1.3;
+    const endY = window.innerHeight * 0.4;
+
+    let progress = (startY - yPos) / (startY - endY);
+    progress = Math.max(0, Math.min(1, progress));
+
+    pt55Target = progress;
+});
+
+function animatePt55() {
+    if (!pt55Section) return;
+    pt55Current += (pt55Target - pt55Current) * 0.1;
+
+    // 1. 차는 화면에 보이는 위치(200px)에서부터 달려와 왼쪽(-200px)까지 밀고 들어감
+    // 너무 멀리(500px)서 출발하면 차가 보이지 않아 애니메이션이 늦게 시작되는 것처럼 느껴짐
+    const carOffset = 200 - (400 * pt55Current);
+    if (yellowcar) yellowcar.style.transform = `translateX(${carOffset}px)`;
+
+    // 2. 물리적 충돌 계산: 차 이미지의 여백 등을 고려하여 텍스트가 먼저 움직이지 않도록
+    // 차가 텍스트에 완전히 닿는 시점을 0.6으로 늦췄습니다.
+    let hitProgress = (pt55Current - 0.6) / 0.4;
+    hitProgress = Math.max(0, Math.min(1, hitProgress));
+
+    // 텐션 강도를 낮춰서 당구공보다는 얼음판 위를 스르륵 미끄러지는 느낌의 완만한 곡선 적용
+    const slideProgress = 1 - Math.pow(1 - hitProgress, 1.5);
+
+    // '일', '로', '와' 글자들이 차에 맞고 미끄러짐
+    const stairs = document.querySelectorAll('.stair');
+    stairs.forEach((stair, index) => {
+        let maxPush = 0;
+        if (index === 0) maxPush = 100;
+        else if (index === 1) maxPush = 600;
+        else if (index === 2) maxPush = 1400;
+
+        const pushAmount = maxPush * slideProgress;
+
+        stair.style.display = 'inline-block';
+        stair.style.transform = `translateY(${pushAmount}px)`;
+    });
+
+    requestAnimationFrame(animatePt55);
+}
+// 최초 실행
+animatePt55();
+
+// 가로 스크롤 + 텍스트 애니메이션 시작
+animateHorizontalScroll();
 
 
 
@@ -215,8 +400,8 @@ animatePt6();
 // 비 애니메이션 전용 로직 (분리됨)
 // ==========================================
 const rainElements = document.querySelectorAll('.rain');
-const rainSection = document.querySelector('.pt8'); // 해당 섹션
-const rainOffset = rainSection.offsetTop;
+const rainSection = document.querySelector('.pt7'); // HTML에서 pt8이 pt7로 변경됨
+const rainOffset = rainSection ? rainSection.offsetTop : 0;
 
 let rainTargetY = 0;
 let rainCurrentY = 0;
@@ -247,3 +432,52 @@ function animateRain() {
 animateRain();
 
 
+
+// ==========================================
+// fence 스크롤 연동 슬라이드인 (스크롤 올리면 다시 들어감)
+// ==========================================
+const fenceElements = document.querySelectorAll('.fence1, .fence2, .fence3');
+
+let fenceTargets = [0, 0, 0];
+let fenceCurrents = [0, 0, 0];
+
+window.addEventListener('scroll', () => {
+    fenceElements.forEach((fence, index) => {
+        const rect = fence.getBoundingClientRect();
+
+        // 화면 하단(90% 지점)에서 등장하기 시작해, 중간(40% 지점)쯤 완전히 들어옵니다.
+        const startY = window.innerHeight * 0.9;
+        const endY = window.innerHeight * 0.4;
+
+        let progress = (startY - rect.top) / (startY - endY);
+        // 0과 1 사이로 제한
+        progress = Math.max(0, Math.min(1, progress));
+
+        fenceTargets[index] = progress;
+    });
+});
+
+function animateFence() {
+    fenceElements.forEach((fence, index) => {
+        // 부드럽게 따라가기 (관성)
+        fenceCurrents[index] += (fenceTargets[index] - fenceCurrents[index]) * 0.05;
+
+        let offset = 0;
+
+        if (fence.classList.contains('fence2')) {
+            // 오른쪽 2번 펜스: 더 먼 거리(+300px)에서 0px 로 이동
+            const fence2Offset = 500;
+            offset = fence2Offset * (1 - fenceCurrents[index]);
+        } else {
+            // 왼쪽 1, 3번 펜스: 기본 거리(-150px)에서 0px 로 이동
+            const defaultOffset = 150;
+            offset = -defaultOffset * (1 - fenceCurrents[index]);
+        }
+
+        fence.style.transform = `translateX(${offset}px)`;
+    });
+
+    requestAnimationFrame(animateFence);
+}
+// 최초 실행
+animateFence();

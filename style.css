@@ -304,9 +304,11 @@ img {
 .pt4 {
     position: relative;
     height: 3500px;
-    padding-top: 150px;
+    padding-top: 300px;
 
 }
+
+
 
 
 
@@ -315,30 +317,29 @@ img {
     position: absolute;
     width: 800px;
     padding-left: 750px;
-    top: -20px;
+    top: -10px;
 }
 
 .pt4textbox2 {
     position: absolute;
     width: 600px;
     right: 0;
-    padding-right: 100px;
-    top: 500px;
+
+    top: 520px;
+    text-align: right;
 }
 
 .pt4textbox3 {
     position: absolute;
-    width: 600px;
-    right: 0;
-    padding-right: 100px;
-    top: 1000px;
+    width: 800px;
+    left: 500px;
+    top: 1500px;
 }
 
 .pt4textbox4 {
     position: absolute;
     width: 500px;
-    padding-left: 100px;
-    top: 1500px;
+    top: 2000px;
 }
 
 
@@ -359,29 +360,53 @@ img {
 
 .fence1 {
     position: absolute;
-    left: -300px;
-    top: 370px;
+    left: -1500px;
+    top: 670px;
 }
 
 .fence2 {
     position: absolute;
-    right: -300px;
-    top: 800px;
+    right: -230px;
+    top: 1350px;
 }
 
 .fence3 {
     position: absolute;
     left: -300px;
-    top: 1550px;
+    top: 2050px;
 }
 
-.block1 {
+.movingtext1 {
     position: absolute;
-    width: 300px;
-    height: 300px;
-    background-color: #d3d3d3;
-
+    top: -150px;
+    left: -75px;
 }
+
+.movingtext2 {
+    position: absolute;
+    transform: rotate(90deg);
+    transform-origin: right center;
+    /* 👈 회전 기준점을 오른쪽으로 변경 */
+    right: -20px;
+    top: 1700px;
+}
+
+
+
+.movingtext1 p,
+.movingtext2 p {
+    color: #F2EE19;
+    font-size: 5rem;
+    font-weight: 600;
+}
+
+.shoes {
+    position: absolute;
+    top: 2200px;
+    right: 0;
+}
+
+
 
 .bike {
     position: absolute;
@@ -512,12 +537,7 @@ img {
 
 }
 
-.pt5textbox9 {
-    position: absolute;
-    top: 600px;
-    left: 1000px;
 
-}
 
 
 .pt5img1 {
@@ -589,8 +609,6 @@ img {
     left: 2773px;
 }
 
-
-
 .scroll-spacer h3 {
     color: #F2EE19;
 }
@@ -602,9 +620,49 @@ img {
 }
 
 
+
+
+.pt5-5 {
+    position: relative;
+    height: 1400px;
+}
+
+
+
+.yellowcar {
+    position: absolute;
+    top: 700px;
+    right: -800px;
+}
+
+.movingtext3 {
+    position: absolute;
+    top: 1000px;
+    right: -15px;
+    transform: rotate(90deg);
+    transform-origin: right center;
+    /* 👈 회전 기준점을 오른쪽으로 변경 */
+}
+
+.movingtext3 p {
+    color: #F2EE19;
+    font-size: 4rem;
+    font-weight: 600;
+}
+
+
+
+.pt5-6 {
+    height: 2000px;
+    background-color: #d3d3d3;
+}
+
+
+
+
 .pt6 {
     position: relative;
-    height: 3000px;
+    height: 4000px;
 }
 
 .pt6bk {
@@ -627,21 +685,28 @@ img {
 }
 
 .pt6textbox2 {
-    padding-top: 200px;
+    padding-top: 700px;
     width: 600px;
 
+}
+
+.pt6textbox2 p,
+.pt6textbox3 p {
+    color: white;
+    background-color: #121212;
 }
 
 .pt6textbox3 {
     position: absolute;
     width: 600px;
-    top: 1800px;
+    top: 2300px;
     right: 0;
     text-align: right;
 }
 
 .pt6img1 {
     position: relative;
+    top: 0px;
     height: 1300px;
 
 }
@@ -652,6 +717,9 @@ img {
     opacity: 0;
     transition: opacity 0.1s;
 }
+
+
+
 
 .trash0 {
     top: -450px;
@@ -784,13 +852,10 @@ img {
 }
 
 
+
+
+
 .pt7 {
-    height: 2000px;
-    background-color: #d3d3d3;
-}
-
-
-.pt8 {
     position: relative;
     height: 1700px;
     background-color: #121212;
@@ -798,12 +863,12 @@ img {
 
 }
 
-.pt8 p {
+.pt7 p {
     font-weight: 700;
 }
 
 
-.pt8textbox1 {
+.pt7textbox1 {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -818,7 +883,7 @@ img {
     color: #F2EE19;
 }
 
-.pt8textbox2 {
+.pt7textbox2 {
     position: absolute;
     top: 212px;
     left: 417px;
@@ -827,21 +892,21 @@ img {
     will-change: transform;
 }
 
-.pt8textbox3 {
+.pt7textbox3 {
     position: absolute;
     top: 880px;
     left: 575px;
     will-change: transform;
 }
 
-.pt8textbox4 {
+.pt7textbox4 {
     position: absolute;
     top: 1480px;
     left: 1120px;
     will-change: transform;
 }
 
-.pt8textbox2 p {
+.pt7textbox2 p {
     letter-spacing: 0.2rem;
 }
 
