@@ -362,7 +362,7 @@ window.addEventListener('scroll', () => {
 
     // [튜닝] startOffset: 화면의 80% 지점(하단)에서부터 이미지가 나타나기 시작함
     // 이 숫자를 키우면 더 빨리 시작하고, 줄이면 늦게 시작합니다.
-    const startOffset = window.innerHeight * 0.7;
+    const startOffset = window.innerHeight * 0.4;
 
     // 섹션 내 스크롤 진행도 계산
     let progress = (-rect.top + startOffset) / (sectionHeight - window.innerHeight);
@@ -373,7 +373,7 @@ window.addEventListener('scroll', () => {
 
 function animatePt6() {
     // 1. 관성 효과 (0.15: 더 빠르게 쫓아오도록 조절됨)
-    pt6CurrentProgress += (pt6TargetProgress - pt6CurrentProgress) * 0.05;
+    pt6CurrentProgress += (pt6TargetProgress - pt6CurrentProgress) * 0.1;
 
     // 2. 이미지들 순차 등장
     pt6Images.forEach((img, index) => {
@@ -481,3 +481,59 @@ function animateFence() {
 }
 // 최초 실행
 animateFence();
+
+// ==========================================
+// pt5-6 이미지 스크롤 연동 양옆으로 갈라지기
+// ==========================================
+const pt56Section = document.querySelector('.pt5-6');
+const pt56Img1 = document.querySelector('.pt5-6img1');
+const pt56Img2 = document.querySelector('.pt5-6img2');
+const pt56CenterImg = document.querySelector('.pt5-6img');
+
+let pt56TargetProgress = 0;
+let pt56CurrentProgress = 0;
+
+// 센터 이미지 전용 progress (더 느린 텐션)
+let pt56CenterTargetProgress = 0;
+let pt56CenterCurrentProgress = 0;
+
+window.addEventListener('scroll', () => {
+    if (!pt56Section) return;
+    const rect = pt56Section.getBoundingClientRect();
+
+    // 이미지가 화면 위로 넘어갈 때 시작
+    const startOffset = -500;
+
+    // 갈라지는 이미지용: 짧은 구간에 확 갈라지게
+    let progress = (-rect.top + startOffset) / 100;
+
+    // 센터 이미지용: 훨씬 긴 구간(600px)에 걸쳐 천천히 내려오게
+    let centerProgress = (-rect.top + startOffset) / 600;
+
+    progress = Math.max(0, Math.min(1, progress));
+
+    pt56TargetProgress = progress;
+    pt56CenterTargetProgress = Math.max(0, Math.min(1, centerProgress));
+});
+
+function animatePt56() {
+    // 갈라지는 이미지: 0.2 텐션으로 빠릿하게
+    pt56CurrentProgress += (pt56TargetProgress - pt56CurrentProgress) * 0.2;
+
+    // img1은 왼쪽으로, img2는 오른쪽으로 밀어냄 (최대 500px 이동)
+    const moveOffset = 500 * pt56CurrentProgress;
+
+    if (pt56Img1) pt56Img1.style.transform = `translateX(${-moveOffset}px)`;
+    if (pt56Img2) pt56Img2.style.transform = `translateX(${moveOffset}px)`;
+
+    // 센터 이미지: 0.05 텐션으로 훨씬 느리고 무겁게 내려옴
+    pt56CenterCurrentProgress += (pt56CenterTargetProgress - pt56CenterCurrentProgress) * 0.6;
+    const dropOffset = 400 * pt56CenterCurrentProgress;
+    if (pt56CenterImg) pt56CenterImg.style.transform = `translateY(${dropOffset}px) rotate(120deg)`;
+
+    requestAnimationFrame(animatePt56);
+}
+
+// 최초 실행
+animatePt56();
+

@@ -24,7 +24,7 @@ p {
 
 p {
     line-height: 1.7;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 1rem;
     display: inline;
     letter-spacing: -1px;
@@ -36,7 +36,7 @@ h1 {
 }
 
 h2 {
-    font-size: 2rem
+    font-size: 3rem
 }
 
 h3 {
@@ -480,7 +480,7 @@ img {
 /* 📌 이제 파란 방 안에서 글자와 이미지들을 absolute로 맘대로 배치합니다 */
 .pt5textbox1 {
     position: absolute;
-    left: -65px;
+    left: -75px;
     top: 250px;
 }
 
@@ -609,15 +609,23 @@ img {
     left: 2773px;
 }
 
+.footstep9 {
+    position: absolute;
+    top: 0px;
+    left: 3200px;
+}
+
+.footstep10 {
+    position: absolute;
+    top: 100px;
+    left: 3370px;
+}
+
 .scroll-spacer h3 {
     color: #F2EE19;
 }
 
-.talk1 {
-    position: absolute;
-    top: -15px;
-    left: 1800px;
-}
+
 
 
 
@@ -628,11 +636,16 @@ img {
 }
 
 
-
 .yellowcar {
     position: absolute;
     top: 700px;
     right: -800px;
+}
+
+.yellowcar2 {
+    position: absolute;
+    top: 1200px;
+    transform: rotate(230deg);
 }
 
 .movingtext3 {
@@ -645,7 +658,7 @@ img {
 }
 
 .movingtext3 p {
-    color: #F2EE19;
+    color: black;
     font-size: 4rem;
     font-weight: 600;
 }
@@ -657,12 +670,98 @@ img {
     background-color: #d3d3d3;
 }
 
+.pt5-6textbox1 {
+    position: absolute;
+    top: 600px;
+    left: 280px;
+    z-index: 11;
+    color: #F2EE19;
+    letter-spacing: -2px;
+}
+
+.yellowbox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)rotate(60deg);
+    width: 1600px;
+    height: 1200px;
+    color: #F2EE19;
+    background-color: #F2EE19;
+}
+
+
+.pt5-6img1 {
+    position: absolute;
+    top: 500px;
+    right: 185px;
+    z-index: 10;
+}
+
+.pt5-6img2 {
+    position: absolute;
+    top: 500px;
+    left: 185px;
+    z-index: 10;
+
+}
+
+.pt5-6img {
+    position: absolute;
+    top: 800px;
+    left: 600px;
+    transform: rotate(120deg);
+    z-index: 5;
+}
+
+
+.pt5-6img3 {
+    position: absolute;
+    top: 700px;
+    left: 185px;
+    z-index: 5;
+    transform: rotate(250deg);
+
+}
+
+.pt5-6img4 {
+    position: absolute;
+    top: 800px;
+    left: 800px;
+
+
+}
+
+.pt5-6img5 {
+    position: absolute;
+    top: 900px;
+    left: 800px;
+
+
+}
+
+.pt5-6img6 {
+    position: absolute;
+    top: 900px;
+    left: 700px;
+
+
+}
+
+.pt5-6img7 {
+    position: absolute;
+    top: 800px;
+    left: 700px;
+
+
+}
 
 
 
 .pt6 {
     position: relative;
-    height: 4000px;
+    height: 2600px;
+
 }
 
 .pt6bk {
@@ -685,24 +784,13 @@ img {
 }
 
 .pt6textbox2 {
-    padding-top: 700px;
+    padding-top: 100px;
     width: 600px;
 
 }
 
-.pt6textbox2 p,
-.pt6textbox3 p {
-    color: white;
-    background-color: #121212;
-}
 
-.pt6textbox3 {
-    position: absolute;
-    width: 600px;
-    top: 2300px;
-    right: 0;
-    text-align: right;
-}
+
 
 .pt6img1 {
     position: relative;
@@ -849,6 +937,36 @@ img {
 .board11 {
     top: 900px;
     left: 1600px;
+}
+
+
+.pt6-5 {
+    height: 1000px;
+    background: url(img/pole1.png);
+    background-size: cover;
+}
+
+.pt6-5textbox1 {
+    position: absolute;
+    width: 600px;
+    top: 200px;
+    right: 0;
+    text-align: right;
+}
+
+.pt6-5textbox1 p {
+    color: white;
+    background-color: #121212;
+}
+
+.pt6-5img1 {
+    position: absolute;
+    top: -350px;
+
+}
+
+.pt6-5img2 {
+    position: absolute;
 }
 
 
