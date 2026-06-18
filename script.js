@@ -489,6 +489,8 @@ const pt56Section = document.querySelector('.pt5-6');
 const pt56Img1 = document.querySelector('.pt5-6img1');
 const pt56Img2 = document.querySelector('.pt5-6img2');
 const pt56CenterImg = document.querySelector('.pt5-6img');
+const pt56Img3 = document.querySelector('.pt5-6img3');
+const pt56Img9 = document.querySelector('.pt5-6img9');
 
 let pt56TargetProgress = 0;
 let pt56CurrentProgress = 0;
@@ -496,6 +498,14 @@ let pt56CurrentProgress = 0;
 // 센터 이미지 전용 progress (더 느린 텐션)
 let pt56CenterTargetProgress = 0;
 let pt56CenterCurrentProgress = 0;
+
+// img3 전용 progress (가장 느리고 조금만 이동)
+let pt56Img3TargetProgress = 0;
+let pt56Img3CurrentProgress = 0;
+
+// img9 전용 progress
+let pt56Img9TargetProgress = 0;
+let pt56Img9CurrentProgress = 0;
 
 window.addEventListener('scroll', () => {
     if (!pt56Section) return;
@@ -507,13 +517,21 @@ window.addEventListener('scroll', () => {
     // 갈라지는 이미지용: 짧은 구간에 확 갈라지게
     let progress = (-rect.top + startOffset) / 100;
 
-    // 센터 이미지용: 훨씬 긴 구간(600px)에 걸쳐 천천히 내려오게
-    let centerProgress = (-rect.top + startOffset) / 600;
+    // 센터 이미지: 같은 시작점, 800구간 → rect.top=-1300에서 완료 (두 번째)
+    let centerProgress = (-rect.top + startOffset) / 800;
+
+    // img3: 같은 시작점, 2000구간 → rect.top=-1500에서 완료 (가장 마지막)
+    let img3Progress = (-rect.top + startOffset) / 2000;
+
+    // img9: 같은 시작점, 400구간 → rect.top=-900에서 완료 (제일 먼저)
+    let img9Progress = (-rect.top + startOffset) / 400;
 
     progress = Math.max(0, Math.min(1, progress));
 
     pt56TargetProgress = progress;
     pt56CenterTargetProgress = Math.max(0, Math.min(1, centerProgress));
+    pt56Img3TargetProgress = Math.max(0, Math.min(0.5, img3Progress));
+    pt56Img9TargetProgress = Math.max(0, Math.min(0.8, img9Progress));
 });
 
 function animatePt56() {
@@ -526,10 +544,20 @@ function animatePt56() {
     if (pt56Img1) pt56Img1.style.transform = `translateX(${-moveOffset}px)`;
     if (pt56Img2) pt56Img2.style.transform = `translateX(${moveOffset}px)`;
 
-    // 센터 이미지: 0.05 텐션으로 훨씬 느리고 무겁게 내려옴
-    pt56CenterCurrentProgress += (pt56CenterTargetProgress - pt56CenterCurrentProgress) * 0.6;
-    const dropOffset = 400 * pt56CenterCurrentProgress;
+    // 센터 이미지: 0.01 텐션으로 아주 느리고 무겁게 내려옴
+    pt56CenterCurrentProgress += (pt56CenterTargetProgress - pt56CenterCurrentProgress) * 0.05;
+    const dropOffset = 900 * pt56CenterCurrentProgress;
     if (pt56CenterImg) pt56CenterImg.style.transform = `translateY(${dropOffset}px) rotate(120deg)`;
+
+    // img3: 0.02 텐션으로 센터보다 느리고, 최대 300px만 내려오다 멈춤
+    pt56Img3CurrentProgress += (pt56Img3TargetProgress - pt56Img3CurrentProgress) * 0.05;
+    const img3DropOffset = 600 * pt56Img3CurrentProgress; // 최대 0.5 * 600 = 300px
+    if (pt56Img3) pt56Img3.style.transform = `translateY(${img3DropOffset}px) rotate(65deg)`;
+
+    // img9: 0.15 텐션으로 빠르게 내려옴
+    pt56Img9CurrentProgress += (pt56Img9TargetProgress - pt56Img9CurrentProgress) * 0.1;
+    const img9DropOffset = 550 * pt56Img9CurrentProgress; // 최대 1 * 800 = 800px
+    if (pt56Img9) pt56Img9.style.transform = `translateY(${img9DropOffset}px) rotate(50deg)`;
 
     requestAnimationFrame(animatePt56);
 }

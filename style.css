@@ -72,11 +72,17 @@ img {
 }
 
 .navbar {
-    background-color: #121212;
+    position: absolute;
     height: 60px;
-    color: white;
+    color: black;
 
 
+}
+
+.igr,
+.fcb,
+.twt {
+    filter: brightness(0);
 }
 
 .navcontents {
@@ -85,6 +91,10 @@ img {
     align-items: center;
     justify-content: space-between;
     padding: 0 55px;
+}
+
+.navcontents h1 {
+    padding-top: 50px;
 }
 
 .navlist {
@@ -113,7 +123,7 @@ img {
 .pt2 {
     background-color: #d3d3d3;
     width: 100%;
-    height: 1000px;
+    height: 1500px;
 }
 
 /* 잎들이 등장할 특정 타겟 섹션 */
@@ -130,6 +140,7 @@ img {
     position: absolute;
     /* 변경됨: 화면 고정(fixed)에서 섹션 내부 고정(absolute)으로 */
     pointer-events: none;
+    z-index: 10;
 }
 
 
@@ -144,8 +155,9 @@ img {
 }
 
 .leaf3 {
-    top: 55%;
+    top: 60%;
     left: 70%;
+    z-index: 20;
 }
 
 .leaf4 {
@@ -208,6 +220,31 @@ img {
         transform: translate(0, 0) rotate(0deg);
     }
 }
+
+.introtext {
+    position: absolute;
+    top: 15%;
+    width: 800px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.introtext h3 {
+    margin-bottom: 40px;
+    /* h1 아래 여백 */
+}
+
+.dot3 {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+
 
 
 /* 박스 애니메이션이 일어나는 전체 스크롤 트랙 (5배 높이) */
@@ -331,14 +368,15 @@ img {
 
 .pt4textbox3 {
     position: absolute;
-    width: 800px;
+    width: 600px;
     left: 500px;
     top: 1500px;
+    text-align: center;
 }
 
 .pt4textbox4 {
     position: absolute;
-    width: 500px;
+    width: 600px;
     top: 2000px;
 }
 
@@ -387,8 +425,10 @@ img {
     transform: rotate(90deg);
     transform-origin: right center;
     /* 👈 회전 기준점을 오른쪽으로 변경 */
-    right: -20px;
-    top: 1700px;
+    right: -0px;
+    top: 2400px;
+    z-index: 10;
+    text-decoration: line-through;
 }
 
 
@@ -400,20 +440,28 @@ img {
     font-weight: 600;
 }
 
-.shoes {
+
+
+.pt4img1 {
     position: absolute;
-    top: 2200px;
-    right: 0;
+    top: 2010px;
+    right: -100px;
+    z-index: 5;
 }
-
-
 
 .bike {
     position: absolute;
-    bottom: 130px;
-    right: -200px;
+    bottom: -200px;
+    left: -200px;
+    z-index: 5;
 }
 
+.bike2 {
+    position: absolute;
+    top: 2500px;
+    right: -100px;
+    z-index: 1;
+}
 
 
 /* 📌 가로 스크롤 관련 CSS */
@@ -621,6 +669,7 @@ img {
     left: 3370px;
 }
 
+
 .scroll-spacer h3 {
     color: #F2EE19;
 }
@@ -632,7 +681,9 @@ img {
 
 .pt5-5 {
     position: relative;
-    height: 1400px;
+    height: 1600px;
+    background-color: white;
+
 }
 
 
@@ -642,11 +693,7 @@ img {
     right: -800px;
 }
 
-.yellowcar2 {
-    position: absolute;
-    top: 1200px;
-    transform: rotate(230deg);
-}
+
 
 .movingtext3 {
     position: absolute;
@@ -655,19 +702,29 @@ img {
     transform: rotate(90deg);
     transform-origin: right center;
     /* 👈 회전 기준점을 오른쪽으로 변경 */
+    z-index: 20;
+
 }
 
 .movingtext3 p {
-    color: black;
     font-size: 4rem;
     font-weight: 600;
+
 }
 
 
 
 .pt5-6 {
     height: 2000px;
-    background-color: #d3d3d3;
+}
+
+.pt5-6textbox0 {
+    position: absolute;
+    top: -80px;
+    left: 0px;
+    z-index: 11;
+    color: #F2EE19;
+    letter-spacing: -2px;
 }
 
 .pt5-6textbox1 {
@@ -679,12 +736,19 @@ img {
     letter-spacing: -2px;
 }
 
+.pt5-6textbox2 {
+    position: absolute;
+    top: 1800px;
+    left: 280px;
+    z-index: 11;
+}
+
 .yellowbox {
     position: absolute;
-    top: 50%;
+    top: 54%;
     left: 50%;
     transform: translate(-50%, -50%)rotate(60deg);
-    width: 1600px;
+    width: 1400px;
     height: 1200px;
     color: #F2EE19;
     background-color: #F2EE19;
@@ -709,7 +773,7 @@ img {
 .pt5-6img {
     position: absolute;
     top: 800px;
-    left: 600px;
+    left: 580px;
     transform: rotate(120deg);
     z-index: 5;
 }
@@ -718,17 +782,17 @@ img {
 .pt5-6img3 {
     position: absolute;
     top: 700px;
-    left: 185px;
+    left: 800px;
     z-index: 5;
-    transform: rotate(250deg);
+    transform: rotate(65deg);
 
 }
 
 .pt5-6img4 {
     position: absolute;
-    top: 800px;
-    left: 800px;
-
+    top: 700px;
+    left: 600px;
+    z-index: 6;
 
 }
 
@@ -736,23 +800,39 @@ img {
     position: absolute;
     top: 900px;
     left: 800px;
-
+    z-index: 6;
 
 }
 
 .pt5-6img6 {
     position: absolute;
-    top: 900px;
-    left: 700px;
-
+    top: 1300px;
+    left: 200px;
+    z-index: 6;
 
 }
 
 .pt5-6img7 {
     position: absolute;
-    top: 800px;
+    top: 1500px;
     left: 700px;
+    z-index: 3;
 
+}
+
+
+.pt5-6img9 {
+    position: absolute;
+    top: 600px;
+    left: 450px;
+    transform: rotate(50deg);
+    z-index: 3;
+}
+
+.pt5-6img10 {
+    position: absolute;
+    top: -600px;
+    left: -100px;
 
 }
 
@@ -761,6 +841,7 @@ img {
 .pt6 {
     position: relative;
     height: 2600px;
+    padding-bottom: 200px;
 
 }
 
@@ -941,32 +1022,93 @@ img {
 
 
 .pt6-5 {
-    height: 1000px;
+
+    height: 1800px;
     background: url(img/pole1.png);
     background-size: cover;
+    position: relative;
 }
 
 .pt6-5textbox1 {
     position: absolute;
-    width: 600px;
-    top: 200px;
-    right: 0;
-    text-align: right;
+    width: 1000px;
+    top: 800px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 3;
+}
+
+.dot2 {
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
 }
 
 .pt6-5textbox1 p {
     color: white;
     background-color: #121212;
+    font-size: 2rem;
 }
 
-.pt6-5img1 {
-    position: absolute;
-    top: -350px;
-
-}
 
 .pt6-5img2 {
     position: absolute;
+    top: 700px;
+    left: -4000px;
+
+}
+
+.pt6-5img3 {
+    position: absolute;
+    top: 840px;
+    right: -100px;
+    z-index: 1;
+}
+
+/* 1. 이미지를 감싸고 있는 부모 디브(컨테이너) 설정 */
+.pt6-5img1 {
+    position: absolute;
+    top: -340px;
+    right: -200px;
+    width: 1200px;
+    height: 1000px;
+    /* 💡 안전선의 원하는 높이를 입력하세요 (예: 80px, 100px 등) */
+    overflow: hidden;
+    /* 영역 밖으로 넘치는 이미지 숨김 */
+
+    /* HTML의 이미지를 CSS 배경으로 가져와서 가로로 무한 반복 */
+    background-image: url('img/line3.0.png');
+    background-repeat: repeat-x;
+    background-size: 2172px auto;
+    /* 높이는 컨테이너에 맞추고 가로는 비율 유지 */
+    background-position: 0 0;
+
+    /* 애니메이션: 이름(scrollLine), 속도(10초), 일정한 속도(linear), 무한반복(infinite) */
+    animation: scrollLine 20s linear infinite;
+}
+
+/* 2. HTML 내부에 들어있는 기존 img 태그는 숨김 처리 */
+/* (숨겨도 위의 background-image를 통해 화면에는 무한히 나타납니다) */
+.pt6-5img1 img {
+    display: none;
+}
+
+/* 3. 왼쪽으로 끊김 없이 흘러가는 애니메이션 정의 */
+@keyframes scrollLine {
+    from {
+        background-position-x: 0;
+    }
+
+    to {
+        /* 💡 [중요] line2.0.png 이미지의 '실제 가로 크기(px)'를 마이너스 값으로 적어주세요.
+       예를 들어 이미지 가로 해상도가 800px면 -800px, 1200px면 -1200px로 수정해야 
+       뚝뚝 끊기지 않고 완전하게 이어집니다. */
+        background-position-x: -2172px;
+    }
 }
 
 
@@ -975,7 +1117,7 @@ img {
 
 .pt7 {
     position: relative;
-    height: 1700px;
+    height: 2500px;
     background-color: #121212;
     overflow: hidden;
 
@@ -1003,7 +1145,7 @@ img {
 
 .pt7textbox2 {
     position: absolute;
-    top: 212px;
+    top: 602px;
     left: 417px;
     writing-mode: vertical-rl;
     /* 세로쓰기 */
@@ -1012,14 +1154,14 @@ img {
 
 .pt7textbox3 {
     position: absolute;
-    top: 880px;
+    top: 1280px;
     left: 575px;
     will-change: transform;
 }
 
 .pt7textbox4 {
     position: absolute;
-    top: 1480px;
+    top: 1880px;
     left: 1120px;
     will-change: transform;
 }
@@ -1035,144 +1177,233 @@ img {
 }
 
 .rain1 {
-    top: -100px;
+    top: 36%;
 }
 
 .rain2 {
-    top: 200px;
-    left: -200px;
+    top: 12%;
+    left: -12%;
 }
 
 .rain3 {
-    top: 300px;
-    left: 150px;
+    top: 18%;
+    left: 9%;
 }
 
-.rain4 {
-    top: -100px;
-    left: 400px;
-}
+
 
 .rain5 {
-    top: 550px;
-    left: 200px;
+    top: 32%;
+    left: 12%;
 }
 
 .rain6 {
-    top: 100px;
-    left: 700px;
+    top: 6%;
+    left: 42%;
 }
 
 .rain7 {
-    top: 200px;
-    left: 900px;
+    top: 12%;
+    left: 54%;
 }
 
 .rain8 {
-    top: -300px;
-    left: 800px;
+    top: 50%;
+    left: 48%;
 }
 
 .rain9 {
-    top: -300px;
-    left: 1000px;
+    top: 80%;
+    left: 60%;
 }
 
 .rain10 {
-    top: -300px;
-    left: 1100px;
+    top: -18%;
+    left: 66%;
 }
 
-
 .rain11 {
-    top: 300px;
-    left: 1500px;
+    top: 18%;
+    left: 90%;
 }
 
 .rain12 {
-    top: 150px;
-    left: 1200px;
+    top: 9%;
+    left: 72%;
 }
 
 .rain13 {
-    top: -300px;
-    left: 1400px;
+    top: -18%;
+    left: 84%;
 }
 
 .rain14 {
-    top: 500px;
-    left: 1300px;
+    top: 29%;
+    left: 78%;
 }
 
 .rain15 {
-    top: 800px;
-    left: 1100px;
+    top: 47%;
+    left: 66%;
 }
 
 .rain16 {
-    top: 1200px;
-    left: 1250px;
+    top: 71%;
+    left: 75%;
 }
 
 .rain17 {
-    top: 1000px;
-    left: 900px;
+    top: 59%;
+    left: 54%;
 }
 
 .rain18 {
-    top: 1400px;
-    left: 300px;
+    top: 82%;
+    left: 18%;
 }
 
 .rain19 {
-    top: 1200px;
-    left: 50px;
+    top: 71%;
+    left: 3%;
 }
 
 .rain20 {
-    top: 1000px;
-    left: -100px;
+    top: 59%;
+    left: -6%;
 }
 
 .rain21 {
-    top: 1100px;
-    left: 500px;
+    top: 65%;
+    left: 30%;
 }
 
 .rain22 {
-    top: 1250px;
-    left: 400px;
+    top: 74%;
+    left: 24%;
 }
 
 .rain23 {
-    top: 850px;
-    left: 800px;
+    top: 50%;
+    left: 48%;
 }
 
-
 .rain24 {
-    top: 0px;
-    left: 250px;
+    top: 0%;
+    left: 15%;
 }
 
 .rain25 {
-    top: 300px;
-    left: 600px;
+    top: 18%;
+    left: 36%;
 }
 
 .rain26 {
-    top: 350px;
-    left: 650px;
+    top: 21%;
+    left: 39%;
 }
 
 .rain27 {
-    top: 1000px;
-    left: 600px;
+    top: 59%;
+    left: 36%;
 }
-
 
 .pt9 {
     position: relative;
     height: 2000px;
     background-color: #121212;
+    color: white;
+}
+
+
+.pt9textbox1 {
+    position: absolute;
+    top: 40%;
+}
+
+.dot {
+    position: absolute;
+    top: 70%;
+    right: 0%;
+}
+
+.pt9fs1 {
+    position: absolute;
+    top: 200px;
+    right: 0px;
+    transform: rotate(220deg);
+}
+
+.pt9fs2 {
+    position: absolute;
+    top: 500px;
+    right: 400px;
+    transform: rotate(250deg);
+}
+
+.pt9fs3 {
+    position: absolute;
+    top: 1500px;
+    right: 600px;
+    transform: rotate(180deg);
+}
+
+.footerbar {
+    position: relative;
+    background: #121212;
+    height: 400px;
+    display: flex;
+    list-style: none;
+}
+
+.footercontainer {
+    display: flex;
+    align-items: baseline
+}
+
+
+.footertittle {
+    font-size: 2rem;
+    padding-right: 50px;
+    line-height: 0.7;
+
+}
+
+.footertext {
+    width: 540px;
+    font-size: 12px;
+    color: #8b8b8b;
+}
+
+
+.footerlink {
+    padding-left: 200px;
+}
+
+
+.footerbar a {
+    text-decoration-line: none;
+    font-size: 20px;
+    font-weight: 100;
+    color: #8b8b8b;
+}
+
+.footerbar p {
+    color: white;
+}
+
+
+
+.footerbar-item {
+    cursor: pointer;
+
+}
+
+.footerbar-item a:hover {
+    color: #e7e7e0;
+}
+
+
+.Copyright {
+    position: absolute;
+    padding-top: 200px;
 }
