@@ -208,7 +208,7 @@ footprints.forEach(img => {
 });
 
 function updateFootprints() {
-    const triggerX = window.innerWidth * 0.7;
+    const triggerX = window.innerWidth * 0.8;
 
     footprints.forEach(img => {
         const rect = img.getBoundingClientRect();
@@ -294,8 +294,8 @@ window.addEventListener('scroll', () => {
 
     // 트리거 시점 대폭 앞당김: 텍스트가 화면 중앙에 도달하기 '전에' 이미 충돌이 일어나도록
     // 화면에 나타나기 직전(130%)부터 모션을 시작하고, 중앙(50%)보다 위인 40%에서 모션이 끝납니다.
-    const startY = window.innerHeight * 1.3;
-    const endY = window.innerHeight * 0.4;
+    const startY = window.innerHeight * 0.5;
+    const endY = window.innerHeight * 0.1;
 
     let progress = (startY - yPos) / (startY - endY);
     progress = Math.max(0, Math.min(1, progress));
@@ -309,8 +309,8 @@ function animatePt55() {
 
     // 1. 차는 화면에 보이는 위치(200px)에서부터 달려와 왼쪽(-200px)까지 밀고 들어감
     // 너무 멀리(500px)서 출발하면 차가 보이지 않아 애니메이션이 늦게 시작되는 것처럼 느껴짐
-    const carOffset = 200 - (400 * pt55Current);
-    if (yellowcar) yellowcar.style.transform = `translateX(${carOffset}px)`;
+    const carOffset = 190 - (110 * pt55Current);
+    if (yellowcar) yellowcar.style.transform = `translateX(${carOffset}%)`;
 
     // 2. 물리적 충돌 계산: 차 이미지의 여백 등을 고려하여 텍스트가 먼저 움직이지 않도록
     // 차가 텍스트에 완전히 닿는 시점을 0.6으로 늦췄습니다.
@@ -324,14 +324,14 @@ function animatePt55() {
     const stairs = document.querySelectorAll('.stair');
     stairs.forEach((stair, index) => {
         let maxPush = 0;
-        if (index === 0) maxPush = 100;
-        else if (index === 1) maxPush = 600;
-        else if (index === 2) maxPush = 1400;
+        if (index === 0) maxPush = 6;
+        else if (index === 1) maxPush = 36;
+        else if (index === 2) maxPush = 84;
 
         const pushAmount = maxPush * slideProgress;
 
         stair.style.display = 'inline-block';
-        stair.style.transform = `translateY(${pushAmount}px)`;
+        stair.style.transform = `translateY(${pushAmount}vw)`;
     });
 
     requestAnimationFrame(animatePt55);
@@ -565,3 +565,43 @@ function animatePt56() {
 // 최초 실행
 animatePt56();
 
+
+gsap.registerPlugin(ScrollTrigger);
+
+
+
+// 1. movingtext1 애니메이션 (자신이 보일 때 따로 시작)
+gsap.to(".movingtext1", {
+    y: 600, // 🌟 양수 값을 주어 스크롤 시 아래로 내려오도록 설정
+    ease: "none",
+    scrollTrigger: {
+        trigger: ".movingtext1", // 🌟 시작 시점 분리: 기준을 자기 자신으로!
+        start: "bottom 80%", // 🌟 글자가 완전히 다 출현하고, 화면 밑에서 20% 더 올라왔을 때 시작!
+        end: "+=700",
+        scrub: true
+    }
+});
+
+// 2. movingtext2 애니메이션 (자신이 보일 때 따로 시작)
+gsap.to(".movingtext2", {
+    y: 295, // 🌟 마찬가지로 아래로 내려오도록 설정
+    ease: "none",
+    scrollTrigger: {
+        trigger: ".movingtext2", // 🌟 시작 시점 분리: 기준을 자기 자신으로!
+        start: "bottom 80%", // 🌟 글자가 완전히 다 출현하고, 화면 밑에서 20% 더 올라왔을 때 시작!
+        end: "+=300",
+        scrub: true
+    }
+});
+
+// 2. movingtext2 애니메이션 (자신이 보일 때 따로 시작)
+gsap.to(".pt5-6textbox0", {
+    y: 600, // 🌟 마찬가지로 아래로 내려오도록 설정
+    ease: "none",
+    scrollTrigger: {
+        trigger: ".pt5-6textbox0", // 🌟 시작 시점 분리: 기준을 자기 자신으로!
+        start: "bottom 60%", // 🌟 글자가 완전히 다 출현하고, 화면 밑에서 20% 더 올라왔을 때 시작!
+        end: "+=1700",
+        scrub: true
+    }
+});

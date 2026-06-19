@@ -75,6 +75,7 @@ img {
     position: absolute;
     height: 60px;
     color: black;
+    width: 100%;
 
 
 }
@@ -133,6 +134,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+    clip-path: inset(-1000% 0% 0% 0%);
 }
 
 /* 🍃 나뭇잎 공통 스타일 */
@@ -340,8 +342,8 @@ img {
 
 .pt4 {
     position: relative;
-    height: 3500px;
-    padding-top: 300px;
+    height: 4000px;
+    padding-top: 700px;
 
 }
 
@@ -377,7 +379,7 @@ img {
 .pt4textbox4 {
     position: absolute;
     width: 600px;
-    top: 2000px;
+    top: 2100px;
 }
 
 
@@ -387,7 +389,7 @@ img {
 
 .pt4textbox5 {
     position: absolute;
-    top: 3000px;
+    top: 3900px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -411,42 +413,58 @@ img {
 .fence3 {
     position: absolute;
     left: -300px;
-    top: 2050px;
+    top: 2150px;
 }
 
 .movingtext1 {
     position: absolute;
-    top: -150px;
+    top: -700px;
     left: -75px;
 }
 
 .movingtext2 {
     position: absolute;
     transform: rotate(90deg);
-    transform-origin: right center;
+    transform-origin: right top;
     /* 👈 회전 기준점을 오른쪽으로 변경 */
-    right: -0px;
-    top: 2400px;
+    right: 0px;
+    top: 2970px;
     z-index: 10;
-    text-decoration: line-through;
+
 }
 
 
 
 .movingtext1 p,
-.movingtext2 p {
+.movingtext2 del {
     color: #F2EE19;
     font-size: 5rem;
-    font-weight: 600;
+    font-weight: 900;
+    white-space: nowrap;
+    /* 👈 이 코드를 반드시 추가해 주세요! */
+    margin: 0;
+    /* 👈 [필수] 브라우저 기본 마진을 없애서 불필요한 외곽 여백 제거 */
+    line-height: 1;
+    /* 👈 [필수] 글자 높이만큼 박스를 딱 맞게 조여서 회전 시 잘림 방지 */
 }
 
 
 
 .pt4img1 {
     position: absolute;
-    top: 2010px;
-    right: -100px;
+    top: 3010px;
+    right: 0px;
     z-index: 5;
+
+
+}
+
+
+.bike2 {
+    position: absolute;
+    top: 3500px;
+    right: -80px;
+    z-index: 1;
 }
 
 .bike {
@@ -456,14 +474,6 @@ img {
     z-index: 5;
 }
 
-.bike2 {
-    position: absolute;
-    top: 2500px;
-    right: -100px;
-    z-index: 1;
-}
-
-
 /* 📌 가로 스크롤 관련 CSS */
 .scroll-spacer {
     position: relative;
@@ -472,7 +482,7 @@ img {
 .sticky-container {
     position: sticky;
     top: 0;
-    width: 6000px;
+    width: 6500px;
     height: 100vh;
     overflow: hidden;
 }
@@ -528,11 +538,13 @@ img {
 /* 📌 이제 파란 방 안에서 글자와 이미지들을 absolute로 맘대로 배치합니다 */
 .pt5textbox1 {
     position: absolute;
-    left: -75px;
+    left: -105px;
     top: 250px;
 }
 
-
+.pt5textbox1 p {
+    font-weight: 900;
+}
 
 .pt5textbox2 {
     position: absolute;
@@ -540,10 +552,18 @@ img {
     top: 361px;
 }
 
+.pt5textbox2 p {
+    font-weight: 700;
+}
+
 .pt5textbox3 {
     position: absolute;
     top: 750px;
     left: 1682px;
+}
+
+.pt5textbox3 p {
+    font-weight: 450;
 }
 
 
@@ -556,6 +576,11 @@ img {
 
 }
 
+
+.pt5textbox4 p {
+    font-weight: 200;
+}
+
 .pt5textbox5 {
     position: absolute;
     top: 0px;
@@ -563,26 +588,34 @@ img {
 
 }
 
-.pt5textbox6 {
-    position: absolute;
-    top: 170px;
-    left: 300px;
-
+.pt5textbox5 p {
+    font-weight: 450;
 }
+
+
+
 
 .pt5textbox7 {
     position: absolute;
 
-    top: 220px;
-    left: 450px;
+    top: 85px;
+    left: -30px;
 
+}
+
+.pt5textbox7 p {
+    font-weight: 450;
 }
 
 .pt5textbox8 {
     position: absolute;
     top: 550px;
-    left: 500px;
+    left: 745px;
 
+}
+
+.pt5textbox8 p {
+    font-weight: 450;
 }
 
 
@@ -612,7 +645,7 @@ img {
 .pt5img4 {
     position: absolute;
     top: 0;
-    left: 500px;
+    left: 50px;
 }
 
 
@@ -631,42 +664,19 @@ img {
 }
 
 
-.footstep5 {
-    position: absolute;
-    top: 735px;
-    left: 2400px;
 
-}
-
-.footstep6 {
-    position: absolute;
-    top: 735px;
-    left: 2500px;
-
-}
-
-.footstep7 {
-    position: absolute;
-    top: 100px;
-    left: 2773px;
-}
-
-.footstep8 {
-    position: absolute;
-    top: 250px;
-    left: 2773px;
-}
 
 .footstep9 {
     position: absolute;
-    top: 0px;
-    left: 3200px;
+    top: 600px;
+    left: 4600px;
+
 }
 
 .footstep10 {
     position: absolute;
-    top: 100px;
-    left: 3370px;
+    top: 700px;
+    left: 4770px;
 }
 
 
@@ -683,38 +693,47 @@ img {
     position: relative;
     height: 1600px;
     background-color: white;
+    padding-top: 500px;
 
 }
 
 
 .yellowcar {
     position: absolute;
-    top: 700px;
-    right: -800px;
+    top: 580px;
+    right: 0;
+    transform: translateX(100%);
 }
 
 
 
 .movingtext3 {
     position: absolute;
-    top: 1000px;
-    right: -15px;
+    top: 1600px;
+    right: 0px;
     transform: rotate(90deg);
-    transform-origin: right center;
+    transform-origin: right top;
     /* 👈 회전 기준점을 오른쪽으로 변경 */
     z-index: 20;
 
 }
 
 .movingtext3 p {
-    font-size: 4rem;
-    font-weight: 600;
+    font-size: 5rem;
+    font-weight: 900;
+    white-space: nowrap;
+    /* 👈 이 코드를 반드시 추가해 주세요! */
+    margin: 0;
+    /* 👈 [필수] 브라우저 기본 마진을 없애서 불필요한 외곽 여백 제거 */
+    line-height: 1;
+    /* 👈 [필수] 글자 높이만큼 박스를 딱 맞게 조여서 회전 시 잘림 방지 */
 
 }
 
 
 
 .pt5-6 {
+    position: relative;
     height: 2000px;
 }
 
@@ -729,8 +748,8 @@ img {
 
 .pt5-6textbox1 {
     position: absolute;
-    top: 600px;
-    left: 280px;
+    top: 550px;
+    left: 245px;
     z-index: 11;
     color: #F2EE19;
     letter-spacing: -2px;
@@ -832,8 +851,14 @@ img {
 .pt5-6img10 {
     position: absolute;
     top: -600px;
-    left: -100px;
+    left: 0px;
 
+}
+
+.bike3 {
+    position: absolute;
+    top: 800px;
+    left: 250px;
 }
 
 
@@ -1020,6 +1045,14 @@ img {
     left: 1600px;
 }
 
+.dot2 {
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+}
 
 .pt6-5 {
 
@@ -1027,6 +1060,7 @@ img {
     background: url(img/pole1.png);
     background-size: cover;
     position: relative;
+    background-attachment: fixed;
 }
 
 .pt6-5textbox1 {
@@ -1039,14 +1073,7 @@ img {
     z-index: 3;
 }
 
-.dot2 {
-    position: absolute;
-    top: 120%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
 
-}
 
 .pt6-5textbox1 p {
     color: white;
@@ -1055,60 +1082,24 @@ img {
 }
 
 
-.pt6-5img2 {
-    position: absolute;
-    top: 700px;
-    left: -4000px;
 
-}
 
 .pt6-5img3 {
     position: absolute;
     top: 840px;
-    right: -100px;
-    z-index: 1;
+    left: 0px;
+    z-index: 5;
+    opacity: 0;
+    /* 👈 평소엔 안 보이게 */
+    visibility: hidden;
+    /* 👈 마우스 클릭 등 방해 방지 */
+    transition: opacity 0.3s;
+    /* 👈 부드럽게 나타나는 효과 */
 }
 
-/* 1. 이미지를 감싸고 있는 부모 디브(컨테이너) 설정 */
-.pt6-5img1 {
-    position: absolute;
-    top: -340px;
-    right: -200px;
-    width: 1200px;
-    height: 1000px;
-    /* 💡 안전선의 원하는 높이를 입력하세요 (예: 80px, 100px 등) */
-    overflow: hidden;
-    /* 영역 밖으로 넘치는 이미지 숨김 */
-
-    /* HTML의 이미지를 CSS 배경으로 가져와서 가로로 무한 반복 */
-    background-image: url('img/line3.0.png');
-    background-repeat: repeat-x;
-    background-size: 2172px auto;
-    /* 높이는 컨테이너에 맞추고 가로는 비율 유지 */
-    background-position: 0 0;
-
-    /* 애니메이션: 이름(scrollLine), 속도(10초), 일정한 속도(linear), 무한반복(infinite) */
-    animation: scrollLine 20s linear infinite;
-}
-
-/* 2. HTML 내부에 들어있는 기존 img 태그는 숨김 처리 */
-/* (숨겨도 위의 background-image를 통해 화면에는 무한히 나타납니다) */
-.pt6-5img1 img {
-    display: none;
-}
-
-/* 3. 왼쪽으로 끊김 없이 흘러가는 애니메이션 정의 */
-@keyframes scrollLine {
-    from {
-        background-position-x: 0;
-    }
-
-    to {
-        /* 💡 [중요] line2.0.png 이미지의 '실제 가로 크기(px)'를 마이너스 값으로 적어주세요.
-       예를 들어 이미지 가로 해상도가 800px면 -800px, 1200px면 -1200px로 수정해야 
-       뚝뚝 끊기지 않고 완전하게 이어집니다. */
-        background-position-x: -2172px;
-    }
+.pt6-5textbox1:has(p:hover)~.pt6-5img3 {
+    opacity: 1;
+    visibility: visible;
 }
 
 
