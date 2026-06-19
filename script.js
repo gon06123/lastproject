@@ -1,3 +1,7 @@
+
+
+
+
 const leaves = document.querySelectorAll('.leaf');
 const leafSection = document.querySelector('.leaf-section');
 
@@ -5,7 +9,7 @@ const leafSection = document.querySelector('.leaf-section');
 // 전체 페이지 부드러운 세로 스크롤 (Lenis)
 // ==========================================
 const lenis = new Lenis({
-    duration: 0.7, // 스크롤 부드러움 정도 (기본값 1.2)
+    duration: 1.1, // 스크롤 부드러움 정도 (기본값 1.2)
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // 부드러운 감속 곡선
     direction: 'vertical',
     gestureDirection: 'vertical',
