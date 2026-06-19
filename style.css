@@ -1108,7 +1108,7 @@ img {
 
 .pt7 {
     position: relative;
-    height: 2500px;
+    height: 2000px;
     background-color: #121212;
     overflow: hidden;
 
@@ -1136,7 +1136,7 @@ img {
 
 .pt7textbox2 {
     position: absolute;
-    top: 602px;
+    top: 352px;
     left: 417px;
     writing-mode: vertical-rl;
     /* 세로쓰기 */
@@ -1145,14 +1145,14 @@ img {
 
 .pt7textbox3 {
     position: absolute;
-    top: 1280px;
+    top: 1030px;
     left: 575px;
     will-change: transform;
 }
 
 .pt7textbox4 {
     position: absolute;
-    top: 1880px;
+    top: 1630px;
     left: 1120px;
     will-change: transform;
 }
@@ -1204,8 +1204,8 @@ img {
 }
 
 .rain9 {
-    top: 80%;
-    left: 60%;
+    top: 60%;
+    left: 95%;
 }
 
 .rain10 {
