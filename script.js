@@ -1,7 +1,6 @@
 
 
 
-
 const leaves = document.querySelectorAll('.leaf');
 const leafSection = document.querySelector('.leaf-section');
 
@@ -607,5 +606,12 @@ gsap.to(".pt5-6textbox0", {
         start: "bottom 60%", // 🌟 글자가 완전히 다 출현하고, 화면 밑에서 20% 더 올라왔을 때 시작!
         end: "+=1700",
         scrub: true
+    }
+});
+
+
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        e.preventDefault();
     }
 });
